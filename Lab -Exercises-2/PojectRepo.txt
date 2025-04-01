@@ -1,0 +1,191 @@
+Last login: Tue Apr  1 19:54:23 on ttys000
+(base) swarpson@Swaroops-MacBook-Air ~ % git init ProjectRepo
+ 
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint:
+hint: 	git config --global init.defaultBranch <name>
+hint:
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint:
+hint: 	git branch -m <name>
+Initialized empty Git repository in /Users/swarpson/ProjectRepo/.git/
+(base) swarpson@Swaroops-MacBook-Air ~ % cd ProjectRepo
+(base) swarpson@Swaroops-MacBook-Air ProjectRepo % echo "*.log" > .gitignore
+ 
+(base) swarpson@Swaroops-MacBook-Air ProjectRepo % git remote add origin https://github.com/swarpson/ProjectRepo.git
+(base) swarpson@Swaroops-MacBook-Air ProjectRepo % git remote -v
+ 
+origin	https://github.com/swarpson/ProjectRepo.git (fetch)
+origin	https://github.com/swarpson/ProjectRepo.git (push)
+(base) swarpson@Swaroops-MacBook-Air ProjectRepo % git add .gitignore
+ 
+(base) swarpson@Swaroops-MacBook-Air ProjectRepo % git commit -m "Added ignore file."
+ 
+[master (root-commit) 1582211] Added ignore file.
+ 1 file changed, 1 insertion(+)
+ create mode 100644 .gitignore
+(base) swarpson@Swaroops-MacBook-Air ProjectRepo % git push -u origin main
+ 
+error: src refspec main does not match any
+error: failed to push some refs to 'https://github.com/swarpson/ProjectRepo.git'
+(base) swarpson@Swaroops-MacBook-Air ProjectRepo % git branch -m main
+ 
+(base) swarpson@Swaroops-MacBook-Air ProjectRepo % git push -u origin main
+ 
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 227 bytes | 227.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://github.com/swarpson/ProjectRepo.git
+ * [new branch]      main -> main
+branch 'main' set up to track 'origin/main'.
+(base) swarpson@Swaroops-MacBook-Air ProjectRepo % git checkout -b development
+ 
+Switched to a new branch 'development'
+(base) swarpson@Swaroops-MacBook-Air ProjectRepo % echo "Initial development notes" > dev_notes.txt
+ 
+(base) swarpson@Swaroops-MacBook-Air ProjectRepo % git add dev_notes.txt
+git commit -m "Initial commit for development branch"
+git push -u origin development 
+[development 6fbbd42] Initial commit for development branch
+ 1 file changed, 1 insertion(+)
+ create mode 100644 dev_notes.txt
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 328 bytes | 328.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: 
+remote: Create a pull request for 'development' on GitHub by visiting:
+remote:      https://github.com/swarpson/ProjectRepo/pull/new/development
+remote: 
+To https://github.com/swarpson/ProjectRepo.git
+ * [new branch]      development -> development
+branch 'development' set up to track 'origin/development'.
+(base) swarpson@Swaroops-MacBook-Air ProjectRepo % git branch -r
+ 
+  origin/development
+  origin/main
+(base) swarpson@Swaroops-MacBook-Air ProjectRepo % git checkout development
+ 
+Already on 'development'
+Your branch is up to date with 'origin/development'.
+(base) swarpson@Swaroops-MacBook-Air ProjectRepo % echo "More detailed development notes." >> dev_notes.txt
+ 
+(base) swarpson@Swaroops-MacBook-Air ProjectRepo % git checkout main
+echo "Updates from main branch." >> dev_notes.txt
+ 
+error: Your local changes to the following files would be overwritten by checkout:
+	dev_notes.txt
+Please commit your changes or stash them before you switch branches.
+Aborting
+(base) swarpson@Swaroops-MacBook-Air ProjectRepo % git add dev_notes.txt
+ 
+(base) swarpson@Swaroops-MacBook-Air ProjectRepo % git commit -m "Updated dev_notes."
+ 
+[development 5e62315] Updated dev_notes.
+ 1 file changed, 2 insertions(+)
+(base) swarpson@Swaroops-MacBook-Air ProjectRepo % git checkout main
+ 
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+(base) swarpson@Swaroops-MacBook-Air ProjectRepo % echo "Updates from main branch." >> dev_notes.txt
+(base) swarpson@Swaroops-MacBook-Air ProjectRepo % git merge development
+ 
+Updating 1582211..5e62315
+error: The following untracked working tree files would be overwritten by merge:
+	dev_notes.txt
+Please move or remove them before you merge.
+Aborting
+(base) swarpson@Swaroops-MacBook-Air ProjectRepo % git add dev_notes.txt
+ 
+(base) swarpson@Swaroops-MacBook-Air ProjectRepo % git commit -m "Updated in main branch"
+ 
+[main aa419dc] Updated in main branch
+ 1 file changed, 1 insertion(+)
+ create mode 100644 dev_notes.txt
+(base) swarpson@Swaroops-MacBook-Air ProjectRepo % git merge development
+ 
+Auto-merging dev_notes.txt
+CONFLICT (add/add): Merge conflict in dev_notes.txt
+Automatic merge failed; fix conflicts and then commit the result.
+(base) swarpson@Swaroops-MacBook-Air ProjectRepo % <<<<<<< HEAD
+
+zsh: parse error near `<<<'
+(base) swarpson@Swaroops-MacBook-Air ProjectRepo % git add dev_notes.txt
+
+(base) swarpson@Swaroops-MacBook-Air ProjectRepo % git commit -m "Resolved merge conflict in dev_notes.txt"
+ 
+[main bb891c9] Resolved merge conflict in dev_notes.txt
+(base) swarpson@Swaroops-MacBook-Air ProjectRepo % git push origin main
+ 
+Enumerating objects: 12, done.
+Counting objects: 100% (12/12), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (8/8), done.
+Writing objects: 100% (9/9), 1.00 KiB | 1.00 MiB/s, done.
+Total 9 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://github.com/swarpson/ProjectRepo.git
+   1582211..bb891c9  main -> main
+(base) swarpson@Swaroops-MacBook-Air ProjectRepo % echo "Erroneous change" >> dev_notes.txt
+git add dev_notes.txt
+git commit -m "Erroneous commit"
+ 
+[main c7a8052] Erroneous commit
+ 1 file changed, 1 insertion(+)
+(base) swarpson@Swaroops-MacBook-Air ProjectRepo % git log
+ 
+commit c7a8052cb50c31bdbc6fe779e1893fad3d7dc125 (HEAD -> main)
+Author: Swaroop R <swarooprbca24@rvu.edu.in>
+Date:   Tue Apr 1 20:41:03 2025 +0530
+
+    Erroneous commit
+
+commit bb891c96f4de9ed199147503c96d6f55223cd1da (origin/main)
+Merge: aa419dc 5e62315
+Author: Swaroop R <swarooprbca24@rvu.edu.in>
+Date:   Tue Apr 1 20:40:01 2025 +0530
+
+    Resolved merge conflict in dev_notes.txt
+
+commit aa419dc12fedae07e594ca15237eededc8d34abe
+Author: Swaroop R <swarooprbca24@rvu.edu.in>
+Date:   Tue Apr 1 20:37:44 2025 +0530
+
+    Updated in main branch
+
+commit 5e623150c05f0f951d1318760c6b135cbdeefab3 (development)
+Author: Swaroop R <swarooprbca24@rvu.edu.in>
+Date:   Tue Apr 1 20:35:13 2025 +0530
+
+    Updated dev_notes.
+
+commit 6fbbd424fed438b2ae749e669d1c678e95923373 (origin/development)
+Author: Swaroop R <swarooprbca24@rvu.edu.in>
+Date:   Tue Apr 1 20:32:44 2025 +0530
+
+    Initial commit for development branch
+
+commit 15822112c933bee9c000caea5f7ee903e1b80672
+Author: Swaroop R <swarooprbca24@rvu.edu.in>
+Date:   Tue Apr 1 20:30:22 2025 +0530
+
+    Added ignore file.
+(base) swarpson@Swaroops-MacBook-Air ProjectRepo % git revert <commit_id>
+ 
+zsh: parse error near `\n'
+(base) swarpson@Swaroops-MacBook-Air ProjectRepo % git log --oneline --graph --all
+ 
+* c7a8052 (HEAD -> main) Erroneous commit
+*   bb891c9 (origin/main) Resolved merge conflict in dev_notes.txt
+|\  
+| * 5e62315 (development) Updated dev_notes.
+| * 6fbbd42 (origin/development) Initial commit for development branch
+* | aa419dc Updated in main branch
+|/  
+* 1582211 Added ignore file.
+(base) swarpson@Swaroops-MacBook-Air ProjectRepo % 
