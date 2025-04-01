@@ -1,0 +1,53 @@
+Last login: Wed Apr  2 00:14:38 on ttys000
+(base) swarpson@Swaroops-MacBook-Air ~ % git clone https://github.com/swarpson/training-kit.git 
+Cloning into 'training-kit'...
+remote: Enumerating objects: 19888, done.
+remote: Counting objects: 100% (5/5), done.
+remote: Compressing objects: 100% (5/5), done.
+remote: Total 19888 (delta 1), reused 0 (delta 0), pack-reused 19883 (from 2)
+Receiving objects: 100% (19888/19888), 358.60 MiB | 5.52 MiB/s, done.
+Resolving deltas: 100% (11855/11855), done.
+(base) swarpson@Swaroops-MacBook-Air ~ % cd training-kit 
+(base) swarpson@Swaroops-MacBook-Air training-kit % git checkout -b bug-fix 
+Switched to a new branch 'bug-fix'
+(base) swarpson@Swaroops-MacBook-Air training-kit % cd training-kit 
+cd: no such file or directory: training-kit
+(base) swarpson@Swaroops-MacBook-Air training-kit % pwd 
+/Users/swarpson/training-kit
+(base) swarpson@Swaroops-MacBook-Air training-kit % ls
+_config.yml			git-guides
+_includes			index.html
+_layouts			LICENSE
+_pages				package-lock.json
+assets				package.json
+CNAME				Rakefile
+CODE_OF_CONDUCT.md		README.md
+CONTRIBUTING.md			redirects-cheatsheets.md
+downloads			redirects.md
+Gemfile				script
+Gemfile.lock
+(base) swarpson@Swaroops-MacBook-Air training-kit % find . -name "error_log.txt" 
+(base) swarpson@Swaroops-MacBook-Air training-kit % touch error_log.txt
+echo "Sample error log content" > error_log.txt
+(base) swarpson@Swaroops-MacBook-Air training-kit % nano error_log.txt 
+(base) swarpson@Swaroops-MacBook-Air training-kit % git add error_log.txt
+git commit -m "Fix spelling errors in error_log.txt"
+[bug-fix 54b2ab77] Fix spelling errors in error_log.txt
+ 1 file changed, 2 insertions(+)
+ create mode 100644 error_log.txt
+(base) swarpson@Swaroops-MacBook-Air training-kit % git push origin bug-fix 
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 360 bytes | 360.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+remote: 
+remote: Create a pull request for 'bug-fix' on GitHub by visiting:
+remote:      https://github.com/swarpson/training-kit/pull/new/bug-fix
+remote: 
+To https://github.com/swarpson/training-kit.git
+ * [new branch]        bug-fix -> bug-fix
+(base) swarpson@Swaroops-MacBook-Air training-kit % 
+(base) swarpson@Swaroops-MacBook-Air training-kit % 

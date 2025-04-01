@@ -1,0 +1,134 @@
+Last login: Wed Apr  2 00:58:23 on ttys000
+(base) swarpson@Swaroops-MacBook-Air ~ % cd Webproject
+(base) swarpson@Swaroops-MacBook-Air Webproject % git checkout feature-x 
+error: pathspec 'feature-x' did not match any file(s) known to git
+(base) swarpson@Swaroops-MacBook-Air Webproject % git branch 
+  feature-login
+  hotfix
+* main
+(base) swarpson@Swaroops-MacBook-Air Webproject % git checkout -b feature-x 
+Switched to a new branch 'feature-x'
+(base) swarpson@Swaroops-MacBook-Air Webproject % git branch 
+  feature-login
+* feature-x
+  hotfix
+  main
+(base) swarpson@Swaroops-MacBook-Air Webproject % echo "Initial notes about the feature" > new_feature.md
+(base) swarpson@Swaroops-MacBook-Air Webproject % git status 
+On branch feature-x
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	new_feature.md
+
+nothing added to commit but untracked files present (use "git add" to track)
+(base) swarpson@Swaroops-MacBook-Air Webproject % git add new_feature.md 
+(base) swarpson@Swaroops-MacBook-Air Webproject % git commit -m "Started working on new feature"
+[feature-x e499b04] Started working on new feature
+ 1 file changed, 1 insertion(+)
+ create mode 100644 new_feature.md
+(base) swarpson@Swaroops-MacBook-Air Webproject % git stash save "Work in progress on feature-x"
+No local changes to save
+(base) swarpson@Swaroops-MacBook-Air Webproject % git stash list 
+(base) swarpson@Swaroops-MacBook-Air Webproject % git stash list 
+(base) swarpson@Swaroops-MacBook-Air Webproject % git branch 
+  feature-login
+* feature-x
+  hotfix
+  main
+(base) swarpson@Swaroops-MacBook-Air Webproject % git status 
+On branch feature-x
+nothing to commit, working tree clean
+(base) swarpson@Swaroops-MacBook-Air Webproject % echo "Adding more details to the feature" >> new_feature.md
+(base) swarpson@Swaroops-MacBook-Air Webproject % git status 
+On branch feature-x
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   new_feature.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+(base) swarpson@Swaroops-MacBook-Air Webproject % git stash save "Updated new_feature.md with more details"
+Saved working directory and index state On feature-x: Updated new_feature.md with more details
+(base) swarpson@Swaroops-MacBook-Air Webproject % git stash list 
+stash@{0}: On feature-x: Updated new_feature.md with more details
+(base) swarpson@Swaroops-MacBook-Air Webproject % git checkout main 
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+(base) swarpson@Swaroops-MacBook-Air Webproject % echo "Urgent fix applied" > urgent_fix.txt
+git add urgent_fix.txt
+git commit -m "Apply urgent fix"
+[main d54f5f3] Apply urgent fix
+ 1 file changed, 1 insertion(+)
+ create mode 100644 urgent_fix.txt
+(base) swarpson@Swaroops-MacBook-Air Webproject % git checkout feature-x 
+Switched to branch 'feature-x'
+(base) swarpson@Swaroops-MacBook-Air Webproject % git stash pop 
+On branch feature-x
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   new_feature.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Dropped refs/stash@{0} (d08b0dfe0b8912cc1616ec8538075c517169ca64)
+(base) swarpson@Swaroops-MacBook-Air Webproject % git stash list 
+(base) swarpson@Swaroops-MacBook-Air Webproject % stash@{0}: On feature-x: Updated new_feature.md with more details
+zsh: command not found: stash@{0}:
+(base) swarpson@Swaroops-MacBook-Air Webproject % echo "Urgent fix applied" > urgent_fix.txt
+(base) swarpson@Swaroops-MacBook-Air Webproject % git add urgent_fix.txt
+git commit -m "Apply urgent fix"
+[feature-x 44f225d] Apply urgent fix
+ 1 file changed, 1 insertion(+)
+ create mode 100644 urgent_fix.txt
+(base) swarpson@Swaroops-MacBook-Air Webproject % git checkout feature-x 
+M	new_feature.md
+Already on 'feature-x'
+(base) swarpson@Swaroops-MacBook-Air Webproject % git stash pop 
+No stash entries found.
+(base) swarpson@Swaroops-MacBook-Air Webproject % git status 
+On branch feature-x
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   new_feature.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+(base) swarpson@Swaroops-MacBook-Air Webproject % git diff 
+diff --git a/new_feature.md b/new_feature.md
+index 359f63a..a19e975 100644
+--- a/new_feature.md
++++ b/new_feature.md
+@@ -1 +1,2 @@
+ Initial notes about the feature
++Adding more details to the feature
+(base) swarpson@Swaroops-MacBook-Air Webproject % echo "More details on the feature..." >> new_feature.md
+git add new_feature.md
+git commit -m "Updated new_feature.md with additional details"
+[feature-x 034a9db] Updated new_feature.md with additional details
+ 1 file changed, 2 insertions(+)
+(base) swarpson@Swaroops-MacBook-Air Webproject % git push origin feature-x 
+Enumerating objects: 10, done.
+Counting objects: 100% (10/10), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (7/7), done.
+Writing objects: 100% (9/9), 941 bytes | 941.00 KiB/s, done.
+Total 9 (delta 2), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (2/2), done.
+remote: 
+remote: Create a pull request for 'feature-x' on GitHub by visiting:
+remote:      https://github.com/swarpson/WebProject/pull/new/feature-x
+remote: 
+To https://github.com/swarpson/WebProject.git
+ * [new branch]      feature-x -> feature-x
+(base) swarpson@Swaroops-MacBook-Air Webproject % git checkout main
+git merge feature-x
+Switched to branch 'main'
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+Merge made by the 'ort' strategy.
+ new_feature.md | 3 +++
+ 1 file changed, 3 insertions(+)
+ create mode 100644 new_feature.md
+(base) swarpson@Swaroops-MacBook-Air Webproject % git branch -d feature-x 
+Deleted branch feature-x (was 034a9db).
+(base) swarpson@Swaroops-MacBook-Air Webproject % 
